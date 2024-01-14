@@ -5,14 +5,19 @@ public partial class Missile2DEntity : Area2D
 
     [Export] public float Acceleration { get; set; } = 1000.0f;
     [Export] public float MinimumSpeed { get; set; } = 100f;
-    [Export] public float MaximumTurnRate { get; set; } = Mathf.Pi/1.2f;
+    [Export] public float MaximumTurnRate { get; set; } = Mathf.Pi;
+    [Export] public Vector2 StartVelocity;
+    [Export] public Line2D Line;
 
-    public Vector2 Velocity = Vector2.Zero;
+    private Missile2DMovementController _movementController;
+
+    public override void _Ready()
+    {
+        _movementController = new VectorMissileMovementController(this);
+    }
 
     public override void _Process(double delta)
     {
-        Position += Velocity * (float)delta;
-        
-        Rotation = Velocity.Angle() + Mathf.Pi/2;
+        _movementController.NextPosition(delta);
     }
 }
