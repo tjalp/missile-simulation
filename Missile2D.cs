@@ -6,6 +6,7 @@ public partial class Missile2D : Node
     [Export] public Missile2DEntity Missile;
     [Export] public Line2D Line;
     [Export] public Label FpsCounter;
+    [Export] public Sprite2D Cursor;
     
     public override void _Ready()
     {
@@ -15,6 +16,7 @@ public partial class Missile2D : Node
     public override void _Process(double delta)
     {
         FpsCounter.Text = Performance.GetMonitor(Performance.Monitor.TimeFps) + " fps";
+        Cursor.Position = GetWindow().GetMousePosition();
         // VectorMethod1(delta, true);
         // VectorMethod2(delta, true);
         // LerpMethod(delta, true);

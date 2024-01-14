@@ -4,11 +4,12 @@ public class BezierMissileMovementController : Missile2DMovementController
 {
     
     private Missile2DEntity _missile;
-    public Vector2 Velocity = Vector2.Up * 500f;
+    public Vector2 Velocity;
 
     public BezierMissileMovementController(Missile2DEntity missile)
     {
         _missile = missile;
+        Velocity = missile.StartVelocity;
     }
 
     public void NextPosition(double delta)

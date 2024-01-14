@@ -1,21 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceqo1466hlcri"]
+[gd_scene load_steps=6 format=3 uid="uid://ceqo1466hlcri"]
 
 [ext_resource type="Script" path="res://Missile2D.cs" id="1_p5isy"]
 [ext_resource type="PackedScene" uid="uid://th3hwp0kw55m" path="res://entities/missile_2d/Missile2DEntity.tscn" id="1_s6umf"]
+[ext_resource type="Texture2D" uid="uid://by43xr0n81pas" path="res://assets/cursor_default.png" id="3_27cxf"]
 
 [sub_resource type="Gradient" id="Gradient_yfafu"]
-colors = PackedColorArray(1, 0, 0, 1, 0.85098, 0, 0.92549, 0)
+colors = PackedColorArray(1, 0, 0, 1, 0.85098, 0, 0.92549, 1)
 
 [sub_resource type="Theme" id="Theme_f1n5x"]
 default_font_size = 32
 
-[node name="Node" type="Node" node_paths=PackedStringArray("FpsCounter")]
+[node name="Node" type="Node" node_paths=PackedStringArray("Missile", "Line", "FpsCounter", "Cursor")]
 script = ExtResource("1_p5isy")
+Missile = NodePath("Missile")
+Line = NodePath("Line2D")
 FpsCounter = NodePath("FPSCounter")
+Cursor = NodePath("Sprite2D")
 
 [node name="Missile" parent="." node_paths=PackedStringArray("Line") instance=ExtResource("1_s6umf")]
-position = Vector2(42, 576)
-StartVelocity = Vector2(0, -500)
+position = Vector2(783, 526)
+StartVelocity = Vector2(2000, 600)
 Line = NodePath("../Line2D")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -27,3 +31,11 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme = SubResource("Theme_f1n5x")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(2, 2)
+texture = ExtResource("3_27cxf")
+centered = false

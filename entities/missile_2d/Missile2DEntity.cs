@@ -13,7 +13,7 @@ public partial class Missile2DEntity : Area2D
 
     public override void _Ready()
     {
-        _movementController = new VectorMissileMovementController(this);
+        _movementController = new BezierMissileMovementController(this);
     }
 
     public override void _Process(double delta)

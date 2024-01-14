@@ -35,7 +35,7 @@ public class VectorMissileMovementController : Missile2DMovementController
         var velocity = Velocity;
         var position = _missile.Position;
         
-        for (int i = 0; i * delta < 3; i++)
+        for (int i = 0; i * delta < 10; i++)
         {
             velocity = GetNextVelocity(position, velocity, delta);
             position = GetNextPosition(position, velocity, delta);
